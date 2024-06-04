@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  </head>
+
+<body>
+  <h1>Welcome converter audio Mp3</h1>
+  <h2>User: maya</h2>
+  <a href="/">Logout</a>
+  <hr>
+  
+ <!-- views/dashboard.html -->
+<h3>Upload dan Konversi Audio MP3</h3>
+<form action="/convert" method="POST" enctype="multipart/form-data">
+  <input type="file" name="audioFile" accept="audio/mpeg" required>
+  <select name="format">
+    <option value="ogg">OGG</option>
+    <option value="flac">FLAC</option>
+    <option value="m4a">M4A</option>
+  </select>
+  <button type="submit">Convert</button>
+</form>
+<!-- Daftar file audio yang diunggah oleh pengguna -->
+<h3>Daftar File Audio yang Sudah Dikonversi</h3>
+  <ul>
+    <% files.forEach(function(file) { %>
+      <li>
+        <%= file.filename %> - <%= file.file_type %> 
+        <a href="/download/<%= file.filename %>">Download</a>
+      </li>
+    <% }); %>
+</ul>
+</body>
+</html>
